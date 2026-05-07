@@ -1,0 +1,114 @@
+/* GLOBAL */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+}
+
+/* NAVBAR */
+.navbar {
+    background: #2c3e50;
+    color: white;
+    padding: 15px 20px;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* REPORT BUTTON */
+.report-btn {
+    background: black;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+/* CONTAINER */
+.container {
+    padding: 20px;
+}
+
+/* CARD */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+/* FORM */
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* BUTTON */
+button {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-add {
+    background: #27ae60;
+    color: white;
+}
+
+/* TABLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #27ae60;
+    color: white;
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* ACTIONS */
+.actions-row {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+}
+
+.actions-row form {
+    display: flex;
+    gap: 3px;
+}
+
+.actions-row input {
+    width: 60px;
+}
+
+/* BUTTON COLORS */
+.btn {
+    min-width: 35px;
+    height: 32px;
+    font-weight: bold;
+}
+
+.green { background: #2ecc71; color: white; }
+.orange { background: #f39c12; color: white; }
+.red { background: #e74c3c; color: white; }
+.blue { background: #3498db; color: white; }

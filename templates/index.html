@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ombor tizimi</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    🏢 Ombor boshqaruv tizimi
+
+    <a href="/report" class="report-btn">📊 Hisobot</a>
+</div>
+
+<div class="container">
+
+    <!-- FORM CARD -->
+    <div class="card">
+        <h3>Mahsulot qo‘shish</h3>
+
+        <form action="/add" method="post" class="form-row">
+            <input type="text" name="name" placeholder="Nomi" required>
+            <input type="number" name="quantity" min="1" placeholder="Miqdor" required>
+            <input type="number" name="price" min="0" placeholder="Narx" required>
+
+            <button type="submit" class="btn-add">Qo‘shish</button>
+        </form>
+    </div>
+
+    <!-- TABLE CARD -->
+    <div class="card">
+        <h3>Ombordagi mahsulotlar</h3>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nomi</th>
+                <th>Miqdor</th>
+                <th>Narx</th>
+                <th>Amallar</th>
+            </tr>
+
+            {% for p in products %}
+            <tr>
+                <td>{{p[0]}}</td>
+                <td>{{p[1]}}</td>
+                <td>{{p[2]}} kg</td>
+                <td>{{ "%.0f"|format(p[3]) }} so‘m</td>
+
+                <td>
+                    <div class="actions-row">
+
+                        <!-- KIRIM -->
+                        <form action="/kirim/{{p[0]}}" method="post">
+                            <input type="number" name="amount" min="1" placeholder="+">
+                            <button class="btn green">+</button>
+                        </form>
+
+                        <!-- CHIQIM -->
+                        <form action="/chiqim/{{p[0]}}" method="post">
+                            <input type="number" name="amount" min="1" placeholder="-">
+                            <button class="btn orange">-</button>
+                        </form>
+
+                        <!-- INVENTAR -->
+                        <form action="/inventory/{{p[0]}}" method="post">
+                            <input type="number" name="real_qty" min="0" placeholder="Real">
+                            <button class="btn blue">✔</button>
+                        </form>
+
+                        <!-- DELETE -->
+                        <a href="/delete/{{p[0]}}">
+                            <button class="btn red">X</button>
+                        </a>
+
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

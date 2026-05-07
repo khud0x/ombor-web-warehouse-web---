@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Hisobot</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='report.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <span>📊 Hisobot sahifasi</span>
+    <a href="/" class="report-btn">⬅ Orqaga</a>
+</div>
+
+<div class="container">
+
+    <!-- STAT -->
+    <div class="card">
+        <h2>📦 Jami mahsulotlar: {{ total_products }}</h2>
+        <h2>💰 Umumiy qiymat: {{ total_value or 0 }} so‘m</h2>
+    </div>
+
+    <!-- 📊 MIQDOR -->
+    <div class="card">
+        <h3>📊 Mahsulot miqdori (kg)</h3>
+        <canvas id="qtyChart"></canvas>
+    </div>
+
+    <!-- 💰 NARX -->
+    <div class="card">
+        <h3>💰 Mahsulot narxlari (so‘m)</h3>
+        <canvas id="priceChart"></canvas>
+    </div>
+
+    <!-- TABLE -->
+    <div class="card">
+        <h3>📋 Inventarizatsiya tarixi</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Mahsulot</th>
+                    <th>Oldingi</th>
+                    <th>Real</th>
+                    <th>Farq</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for log in logs %}
+                <tr>
+                    <td>{{ log[0] }}</td>
+                    <td>{{ log[1] }}</td>
+                    <td>{{ log[2] }}</td>
+
+                    <td class="{% if log[3] < 0 %}negative{% elif log[3] > 0 %}positive{% else %}zero{% endif %}">
+                        {% if log[3] > 0 %}+{{ log[3] }}{% else %}{{ log[3] }}{% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+</div> <!-- ❗ container shu yerda yopiladi -->
+
+<!-- 🔥 DATA -->
+ 
+
+</body>
+</html>
